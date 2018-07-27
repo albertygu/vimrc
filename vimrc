@@ -54,3 +54,6 @@ set paste
 
 "允许在有未保存的修改时切换缓冲区
 set hidden 
+
+" 复制当前文件/路径到剪贴板
+set clipboard=unnamedplus

@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/gujianchao/src/android-ocean-dev/kernel/arch/arm64/boot/dts/qcom'
+let g:netrw_dirhist_2='/home/gujianchao/log/logs/claasic/timer_dead0000208-case03546361-bug-0275843/ramdump/ap-log'
+let g:netrw_dirhist_3='/home/gujianchao/.emacs.d/lisp'
+let g:netrw_dirhist_4='/home/gujianchao/log/logs/claasic/rpmh_TCS_Busy/klogdump'
