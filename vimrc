@@ -50,10 +50,15 @@ vmap <silent> // y/<C-R>=escape(@", '\\/.*$^~[]')<CR><CR>
 set paste 
 
 "" highlight line
- set cursorline
+set cursorline
 
 "允许在有未保存的修改时切换缓冲区
 set hidden 
 
 " 复制当前文件/路径到剪贴板
 set clipboard=unnamedplus
+
+"总是显示状态栏
+set laststatus=2
+"在状态栏显示行号和列号
+set ruler
