@@ -18,6 +18,35 @@ if has("syntax")
   syntax on
 endif
 
+" Only do this part when compiled with support for autocommands.
+if has("autocmd")
+
+  " Put these in an autocmd group, so that we can delete them easily.
+  augroup vimrcEx
+  au!
+
+  " For all text files set 'textwidth' to 78 characters.
+  autocmd FileType text setlocal textwidth=78
+
+  augroup END
+
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+else
+
+  set autoindent		" always set autoindenting on
+
+endif " has("autocmd")
+
+" Add optional packages.
+"
+" The matchit plugin makes the % command work better, but it is not backwards
+" compatible.
+if has('syntax') && has('eval')
+  packadd matchit
+endif
+
+
 set incsearch
 set number 
 set tabstop=8
@@ -28,9 +57,19 @@ set smartindent
 set cmdheight=1
 
 "autocmd BufRead * set tw=78
-"set textwidth=80 
+set textwidth=80 
 
-colo darkblue
+syntax enable
+set background=dark
+
+" colo default
+" colo darkblue
+" colo desert
+"colo industry
+"colo zellner
+colorscheme solarized
+"colo Tomorrow-Night-Eighties
+
 set clipboard+=unnamed
 
 ""treat long line as break line
@@ -62,3 +101,21 @@ set clipboard=unnamedplus
 set laststatus=2
 "在状态栏显示行号和列号
 set ruler
+
+set guifont=文泉驿等宽微米黑\ 18
+
+filetype plugin indent on
+
+au BufEnter,BufNew * if &diff | syntax off | else | syntax on | endif
+if &diff
+    colorscheme molokai
+endif
+
+hi Over80 guifg=fg guibg=Blue
+au BufNewFile,BufRead *.* match Over80 '\%>80v.*'
+" 设置超过80长度提示
+set colorcolumn=81
+
+set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
+set enc=utf8
+set fencs=utf8,gbk,gb2312,gb18030
